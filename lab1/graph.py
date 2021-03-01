@@ -49,9 +49,9 @@ class Graph:
                 self.union(parent, rank, x, y)
 
         minimumCost = 0
-        print("Мінімальне острове дерево:")
+        print("Мінімальне остовне дерево:")
         for u, v, weight in result:
             minimumCost += weight
-            print("%d -- %d == %d" % (u, v, weight))
-        print("Ціна:" , minimumCost)
+            print("%d -- %d, вага: %d" % (u, v, weight))
+        print("Загальна вага:" , minimumCost)
         return result
