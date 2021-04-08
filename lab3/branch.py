@@ -86,27 +86,21 @@ def TSP(matrix):
     TSPRec(matrix, curr_bound, 0, 1, curr_path, visited)
 
 
-def branchAndBound(file):
-    with open(file, 'r') as f:
-        global N, maxsize, final_path, final_res
-        N = int(f.readline())
-        string = f.readlines()
-    string_matrix = list(map(lambda y: y.strip().split(' '), string))
-    matrix = [list(map(int, x)) for x in string_matrix]
-    print(f"Розмірність: {N}")
-    for row in matrix:
-        print(row)
-    print()
+def branchAndBound(matrix):
+    global N, maxsize, final_path, final_res
     maxsize = float('inf')
-
+    N = len(matrix)
     final_path = [None] * (N + 1)
     visited = [False] * N
     final_res = maxsize
     TSP(matrix)
-
-    print("Маршрут : ", end=' ')
-    for i in range(N + 1):
-        print(final_path[i], end=' ')
-    print()
-    print("Ціна    :", final_res)
-    return matrix
+    if final_res != maxsize:
+        print("Маршрут : ", end=' ')
+        for i in range(N + 1):
+            print(final_path[i], end=' ')
+        print()
+        print("Ціна    :", final_res)
+        return final_res
+    else:
+        print("Маршрут не знайдено")
+        return 0

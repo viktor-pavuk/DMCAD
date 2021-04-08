@@ -35,5 +35,9 @@ def fordFulkerson(graph,s,t):
             matrix[v][u]+= path_flow 
             v = parent[v]
         max_flow += path_flow
-    print(f"Максимальний потік з вершини {s} в {t}: {max_flow}")
-    return max_flow
+    if 0<max_flow<float('inf'):
+        print(f"Максимальний потік з витоку {s} в стік {t}: {max_flow}")
+        return max_flow
+    else:
+        print("Максимальний потік не знайдено")
+        return 0
